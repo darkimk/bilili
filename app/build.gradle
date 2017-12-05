@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.darkimk.bilili"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res',
+                    ]
+        }
+    }
+}
+
+buildscript {
+
+    ext {
+        lifecycleVersion = '1.0.0'
+        rxAndroidVersion = '2.0.1'
+        rxJavaVersion = '2.1.2'
+        rxPermissionsVersion = '0.9.4'
+        glideVersion = '4.3.1'
+        dagger2Version = '2.11'
+        retrofitVersion = '2.3.0'
+        gsonVersion = '2.8.2'
+        leakcanaryVersion = '1.5.4'
+        utilcodeVersion = "1.9.6"
+        anko_version = '0.10.2'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    //Architecture Comments
+    implementation "android.arch.lifecycle:common-java8:$lifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
+    //RxJava
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    //RxPermissions
+    compile "com.tbruyelle.rxpermissions2:rxpermissions:$rxPermissionsVersion@aar"
+    //Gson
+    compile "com.google.code.gson:gson:$gsonVersion"
+    //Dagger2
+    compile "com.google.dagger:dagger:$dagger2Version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2Version"
+    //Retrofit2
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    //LeakCanary
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion"
+    //AndroidUtilCode
+    compile "com.blankj:utilcode:$utilcodeVersion"
+    //Anko Commons
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
+    //Glide
+    compile "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+}
