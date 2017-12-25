@@ -1,7 +1,7 @@
 package com.darkimk.bilili
 
 import com.darkimk.bilili.livedata.ObservableBean
-import com.darkimk.bilili.livedata.ob
+import com.darkimk.bilili.extend.ob
 
 /**
  * Created by wh on 17-12-6.

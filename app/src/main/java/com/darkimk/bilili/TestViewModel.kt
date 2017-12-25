@@ -14,4 +14,5 @@ class TestViewModel : ViewModel() {
         if (data.value == null) data.value = TestBean()
         return data
     }
+
 }
