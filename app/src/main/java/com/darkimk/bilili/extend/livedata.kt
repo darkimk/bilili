@@ -1,5 +1,6 @@
 package com.darkimk.bilili.extend
 
+import android.arch.lifecycle.MutableLiveData
 import com.darkimk.bilili.livedata.ObservableBean
 import kotlin.properties.ObservableProperty
 import kotlin.properties.ReadWriteProperty
@@ -16,3 +17,8 @@ fun <T, R : ObservableBean> R.ob(v: T): ReadWriteProperty<Any?, T> =
                 onPropertyChange()
             }
         }
+
+infix fun <T : MutableLiveData<*>> T.handle(block: (T) -> Unit) {
+    block(this)
+    value = value
+}
